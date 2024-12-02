@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ace Game Development</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <h1>Ace Game Development</h1>
+            <ul class="nav-links">
+                <!-- Dropdown for Links -->
+                <li class="dropdown">
+                    <a href="#">Social Links ▼</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://youtube.com" target="_blank">YouTube</a></li>
+                        <li><a href="https://tiktok.com" target="_blank">TikTok</a></li>
+                        <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
+                        <li><a href="https://twitter.com" target="_blank">X (Twitter)</a></li>
+                    </ul>
+                </li>
+                <!-- Dropdown for Page Sections -->
+                <li class="dropdown">
+                    <a href="#">Navigate ▼</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#about">About Me</a></li>
+                        <li><a href="#experiences">Experiences</a></li>
+                        <li><a href="#downloads">Downloads</a></li>
+                        <li><a href="#contact">Contact Me</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- About Me Section -->
+    <section id="about" class="about">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <img src="images/profile-placeholder.png" alt="Profile Picture" class="profile-pic">
+            <p>Hi, I'm Ace! Welcome to my online space dedicated to my journey in game development. Explore my work, download resources, and connect with me through my social media channels.</p>
+        </div>
+    </section>
+
+    <!-- Experiences Section -->
+    <section id="experiences" class="experiences">
+        <h2>My Experiences</h2>
+        <ul class="experience-list">
+            <li>
+                <h3>Lead Game Developer</h3>
+                <p>Worked at XYZ Studios to create immersive 3D worlds for RPG games.</p>
+                <p><em>2019 - 2023</em></p>
+            </li>
+            <li>
+                <h3>Freelance Designer</h3>
+                <p>Designed user-friendly UI/UX for indie games on multiple platforms.</p>
+                <p><em>2015 - 2019</em></p>
+            </li>
+            <li>
+                <h3>Passionate Hobbyist</h3>
+                <p>Always exploring new game engines, crafting stories, and designing mechanics.</p>
+                <p><em>Ongoing</em></p>
+            </li>
+        </ul>
+    </section>
+
+   <!-- Downloads Section -->
+<section id="downloads" class="downloads">
+    <h2>Downloads</h2>
+    <ul class="downloads-list">
+        <li>
+            <p>Game Assets Pack</p>
+            <a href="downloads/game-assets-pack.zip" download class="download-btn">Download</a>
+        </li>
+        <li>
+            <p>Level Design Template</p>
+            <a href="downloads/level-design-template.zip" download class="download-btn">Download</a>
+        </li>
+    </ul>
+</section>
+
+
+    <!-- Contact Me Section -->
+    <section id="contact" class="contact">
+        <h2>Contact Me</h2>
+        <form action="https://formsubmit.co/44walrath@gmail.com" method="POST" class="contact-form">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" placeholder="Your Message" required></textarea>
+
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+    </section>
+   <!-- Modal for Download Preview -->
+<div id="downloadModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h3>Download Preview</h3>
+        <p>Are you sure you want to download this file?</p>
+        
+        <!-- Image Preview Section -->
+        <div id="download-image-container">
+            <img id="download-image" src="" alt="File Preview" style="max-width: 100%; max-height: 200px; border-radius: 8px;"/>
+        </div>
+        
+        <div id="download-file-info"></div>
+        <div class="modal-buttons">
+            <button id="confirm-download" class="confirm-btn">Yes, Download</button>
+            <button id="cancel-download" class="cancel-btn">Cancel</button>
+        </div>
+    </div>
+</div>
+    <script src="script.js"></script>
+</body>
+</html>
