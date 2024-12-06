@@ -397,3 +397,8 @@ header {
         font-size: 1rem;
     }
 }
+#yt-vid{
+    justify-content: center;
+    width: auto;
+    display: flex;
+}
