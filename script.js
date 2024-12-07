@@ -57,36 +57,57 @@ confirmDownloadBtn.addEventListener('click', () => {
     window.location.href = currentDownloadUrl;  // Start the download
     modal.style.display = 'none';
 });
-// Your YouTube API Key and Channel ID
-const apiKey = 'AIzaSyBtK9RQ99LY_FyM_hol3XIWjk9WfU1dAfM'; // Replace with your YouTube Data API key
-const channelId = 'UCI6iuVp86M118Pa2_0NcjOw'; // Replace with your YouTube Channel ID
 
-// URL to fetch the latest video from your channel
-const apiUrl = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&order=date&part=snippet&type=video&maxResults=1`;
+// YouTube API Key and Channel ID
+const apiKey = 'AIzaSyBtK9RQ99LY_FyM_hol3XIWjk9WfU1dAfM'; // Replace with your API key
+const channelId = "UCzmtKpQQyZ-9ZNY_bbFtVHw"; // Replace with your YouTube Channel ID
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener('DOMContentLoaded', () => {
+    // Define the API URL for fetching the latest video from the YouTube channel
+    const apiUrl = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&order=date&part=snippet&type=video&maxResults=1`;
+
+    // Make the API call to get the latest video
     fetch(apiUrl)
-        .then(response => response.json())
+        .then(response => {
+            // Check if the API request was successful
+            if (!response.ok) {
+                throw new Error(`YouTube API request failed with status ${response.status}`);
+            }
+            return response.json();
+        })
         .then(data => {
-            const latestVideo = data.items[0];
-            const videoId = latestVideo.id.videoId;
-            const videoTitle = latestVideo.snippet.title;
-            const videoDescription = latestVideo.snippet.description;
+            // Ensure there is at least one video
+            if (data.items && data.items.length > 0) {
+                const latestVideo = data.items[0];
+                const videoId = latestVideo.id.videoId;
+                const videoTitle = latestVideo.snippet.title;
+                const videoDescription = latestVideo.snippet.description;
 
-            // Create HTML to embed the video (no thumbnail image)
-            const videoHtml = `
-                <h4>${videoTitle}</h4>
-                <p>${videoDescription}</p>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" 
-                title="${videoTitle}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            `;
+                // Create HTML to embed the YouTube video dynamically
+                const videoHtml = `
+                    <h4>${videoTitle}</h4>
+                    <p>${videoDescription}</p>
+                    <iframe 
+                        width="560" 
+                        height="315" 
+                        src="https://www.youtube.com/embed/${videoId}" 
+                        title="${videoTitle}" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                `;
 
-            // Insert the video HTML into the container
-            document.getElementById("youtube-video-container").innerHTML = videoHtml;
+                // Insert the video HTML into the container
+                document.getElementById('youtube-video-container').innerHTML = videoHtml;
+            } else {
+                // If no videos are found, display a message
+                document.getElementById('youtube-video-container').innerText = 'No recent video found.';
+            }
         })
         .catch(error => {
-            console.error("Error fetching YouTube video data:", error);
+            // Log the error and display a message if something goes wrong
+            console.error('Error fetching YouTube data:', error);
+            document.getElementById('youtube-video-container').innerText = 'Error loading video.';
         });
-
-        
 });
