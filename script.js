@@ -23,8 +23,8 @@ document.querySelectorAll('.download-btn').forEach(button => {
         // Here, you define the corresponding image for the download file (you can customize this)
         if (currentDownloadUrl.includes('game-assets-pack')) {
             currentImageUrl = 'images/game-assets-preview.jpg';  // Example image
-        } else if (currentDownloadUrl.includes('level-design-template')) {
-            currentImageUrl = 'images/level-design-preview.jpg';  // Example image
+        } else if (currentDownloadUrl.includes('RPGBaseEnvironment')) {
+            currentImageUrl = 'images/RPGBaseEnvironment.png';  // Example image
         } else {
             currentImageUrl = '';  // Default case (no image)
         }
